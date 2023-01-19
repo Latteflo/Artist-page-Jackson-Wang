@@ -55,10 +55,13 @@
     </header>
     <!-- Main content -->
     <main class="main">
+      <canvas class="webgl"></canvas>
       <!-- Home -->
       <section id="home" class="home">
-        <h1 class="title">Jackson Wang</h1>
-        <img src="/media/background.png" alt="Jackson Wang" class="hero-img" />
+        <h1 class="title">
+          <span class="left">Jackson</span> <span class="right">Wang</span>
+        </h1>
+        <img src="/media/10.png" alt="Jackson Wang" class="hero-img" />
       </section>
       <!-- About -->
       <section id="about" class="about">
@@ -71,6 +74,7 @@
             Korean boy band Got7. In addition to his successful career with the
             group, Jackson has also established himself as a solo artist.
           </p>
+          <br />
           <p>
             He began releasing music as a solo artist in 2018 with the single
             "Papillon" and has since released multiple singles and an EP titled
@@ -78,6 +82,7 @@
             elements of hip-hop, R&B, and pop to create a sound that is both
             energetic and versatile.
           </p>
+          <br />
           <p>
             He has also performed in a variety of shows, music festivals and
             tours around the world.
@@ -92,7 +97,7 @@
       </section>
       <!-- Videos -->
       <section id="video" class="video">
-        <h3>Music videos</h3>
+        <h2>Music videos</h2>
         <div class="video-section">
           <article>
             <div class="ribbon">
@@ -135,7 +140,7 @@
       <!-- Music -->
       <section id="music" class="music">
         <div class="audio-section">
-          <h3>Jackson Wang Activity</h3>
+          <h2> Activity</h2>
         </div>
         <br />
         <iframe
@@ -155,7 +160,7 @@
       <!-- Gallery -->
       <section id="gallery" class="gallery">
         <div class="gallery-section">
-          <h3>Gallery</h3>
+          <h2>Gallery</h2>
           <div class="gallery-container">
             <img src="/media/1.png" alt="Jackson Wang" class="gallery-item" />
             <img src="/media/2.jpg" alt="Jackson Wang" class="gallery-item" />
@@ -262,6 +267,123 @@
       </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <!--<script
+      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.148.0/three.module.js"
+      integrity="sha512-Frn3WwZMEGucL0DXRG9/9riunndlNxvGdFhVtobH69QqRPYthqXR7rrhDlwLfxzfzorvAX4BLycK5jLakQEKuA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>-->
+    <script
+      async
+      src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"
+    ></script>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.148.0/build/three.module.js"
+        }
+      }
+    </script>
+
+    <script type="module">
+      import * as THREE from "three"
+
+      let camera,
+        scene,
+        renderer,
+        geometry,
+        material,
+        mesh,
+        clock,
+        cubeSineDriver,
+        light,
+        smokeTexture,
+        smokeMaterial,
+        smokeGeo,
+        smokeParticles,
+        delta
+      const canvas = document.querySelector("canvas")
+      init()
+      animate()
+
+      function init() {
+        clock = new THREE.Clock()
+
+        renderer = new THREE.WebGLRenderer({ canvas: canvas })
+        renderer.setSize(window.innerWidth, window.innerHeight)
+        scene = new THREE.Scene()
+
+        camera = new THREE.PerspectiveCamera(
+          75,
+          window.innerWidth / window.innerHeight,
+          1,
+          10000
+        )
+        camera.position.z = 1000
+        scene.add(camera)
+
+        geometry = new THREE.BoxGeometry(200, 200, 200)
+        material = new THREE.MeshLambertMaterial({
+          color: 0xffffff,
+          wireframe: false,
+        })
+        mesh = new THREE.Mesh(geometry, material)
+        cubeSineDriver = 0
+
+        THREE.ImageUtils.crossOrigin = "" //Need this to pull in crossdomain images from AWS
+
+        light = new THREE.DirectionalLight(0xffffff, 0.5)
+        light.position.set(-1, 0, 1)
+        scene.add(light)
+
+        smokeTexture = new THREE.TextureLoader().load(
+          "https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/Smoke-Element.png"
+        )
+        smokeMaterial = new THREE.MeshLambertMaterial({
+          color: 0xffffff,
+          map: smokeTexture,
+          transparent: true,
+        })
+        smokeGeo = new THREE.PlaneGeometry(300, 300)
+        smokeParticles = []
+
+        for (let i = 0; i < 150; i++) {
+          let particle = new THREE.Mesh(smokeGeo, smokeMaterial)
+          particle.position.set(
+            Math.random() * 500 - 250,
+            Math.random() * 500 - 250,
+            Math.random() * 1000 - 100
+          )
+          particle.rotation.z = Math.random() * 360
+          scene.add(particle)
+          smokeParticles.push(particle)
+        }
+        document.body.appendChild(renderer.domElement)
+      }
+
+      function animate() {
+        delta = clock.getDelta()
+        requestAnimationFrame(animate)
+        evolveSmoke()
+        render()
+      }
+
+      function evolveSmoke() {
+        let sp = smokeParticles.length
+        while (sp--) {
+          smokeParticles[sp].rotation.z += delta * 0.2
+        }
+      }
+
+      function render() {
+        mesh.rotation.x += 0.005
+        mesh.rotation.y += 0.01
+        cubeSineDriver += 0.01
+        mesh.position.z = 100 + Math.sin(cubeSineDriver) * 500
+        renderer.render(scene, camera)
+      }
+    </script>
     <script src="script.js"></script>
   </body>
 </html>
