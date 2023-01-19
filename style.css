@@ -72,8 +72,8 @@ body {
 
 .nav-container .hamburger-lines {
   display: block;
-  height: 26px;
-  width: 32px;
+  height: 23px;
+  width: 30px;
   position: absolute;
   top: 11px;
   left: 0.5%;
@@ -85,10 +85,10 @@ body {
 
 .nav-container .hamburger-lines .line {
   display: block;
-  height: 4px;
+  height: 3px;
   width: 100%;
   border-radius: 10px;
-  background: #0e2431;
+  background: #fff;
 }
 
 .nav-container .hamburger-lines .line1 {
@@ -181,81 +181,39 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   overflow: hidden;
+  background-color: #000;
+}
+
+canvas{
+  position: absolute;
+  width: 100%!important;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
 .title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: #060606;
-  border: 4px solid rgb(232, 225, 225);
-  font-size: 9rem;
+  font-weight: 900;
+  /*border: 4px solid rgb(232, 225, 225);*/
+  font-size: 10rem;
+  z-index: 2;
+  width: 100%;
+  background-image: url(https://64.media.tumblr.com/085ef9e24400a081858b1ab1b4bce8f8/25c7c64e6ec53a03-88/s400x600/a205de20a954ef871bbd1e3309660094d2b3e0db.gifv);
+  background-size: cover;
+  color: transparent;
+  background-clip: text;
   -moz-background-clip: text;
   -webkit-background-clip: text;
-  background-clip: text;
-  z-index: 1;
-  -webkit-text-stroke: 4px rgba(220, 79, 79, 0.316);
 }
 
-.title:before {
-  color: rgba(255, 3, 3, 0.866);
-  content: "Jackson Wang";
-  overflow: hidden;
-  position: absolute;
-  -webkit-background-clip: text;
-  background-clip: text;
-  clip-path: polygon(0% 0%, 55% 0%, 60% 100%, 0% 100%);
-  animation: slide 5s 3s linear;
-}
 
-/*.title{
-  transition: all 0.5s;
-  -webkit-text-stroke: 4px rgb(44, 44, 44);
-  font-variation-settings: "wght" 900, "ital" 1;
-  font-size: 7rem;
-  color: transparent;
-  text-align: center;
-  font-family:  sans-serif;
-  text-shadow: 10px 10px 0px #07bccc, 15px 15px 0px #e601c0,
-      20px 20px 0px #e9019a, 25px 25px 0px #f40468, 45px 45px 10px #482896;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.title:hover {
-  text-shadow: none;
-  color:black;
-   -webkit-text-stroke: 4px black;
-}*/
-
-@keyframes slide {
-  50% {
-    -webkit-clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
-  }
-}
 
 .hero-img {
   position: absolute;
-  z-index: 0;
+  z-index: 1;
+  width:36%;
   overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-img {
-  width: 100%;
-  height: 100%;
-  background-image: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
-  background-position: 2300%;
-  background-size: 100%;
-  cursor: pointer;
-  -webkit-animation: ani2 0.7s steps(22) forwards;
-  animation: ani2 0.7s steps(22) forwards;
-}
-
-.hero-img:hover {
-  -webkit-animation: ani 0.7s steps(22) forwards;
-  animation: ani 0.7s steps(22) forwards;
 }
 
 /*about styling*/
@@ -275,17 +233,19 @@ section.about {
   justify-content: center;
   align-items: center;
   width: 50%;
+  padding: 5%;
 }
 
 .container > h2 {
   color: #fff;
-  font-size: 3rem;
+  font-size:3rem;
+  text-transform: uppercase;
   font-weight: 900;
 }
 
 .container > p {
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.5;
   text-indent: 20px;
@@ -414,11 +374,13 @@ section > iframe {
   width: 70%;
   height: 550px;
 }
-.music h3 {
+.music h2 {
   color: #0a0a0a;
   margin: 5%;
+  padding: 2%;
   width: 100%;
   font-size: 3rem;
+  text-transform: uppercase;
   font-weight: 900;
   text-align: center;
 }
@@ -431,10 +393,11 @@ section > iframe {
 }
 
 /*video  styles*/
-.video h3 {
+.video h2{
   color: #0a0a0a;
   margin: 3%;
-  font-size: 2rem;
+  text-transform: uppercase;
+  font-size: 3rem;
   font-weight: 900;
   text-align: center;
 }
@@ -517,9 +480,9 @@ section .gallery {
   align-items: center;
 }
 
-.gallery-section h3 {
+.gallery-section h2 {
   color: #0a0a0a;
-  margin: 3%;
+  margin: 5%;
   font-size: 3rem;
   font-weight: 900;
   text-align: center;
@@ -544,6 +507,7 @@ section .gallery {
 .gallery-container img:hover {
   filter: grayscale(0);
   transform: scale(1.1);
+  z-index: 3;
 }
 
 /*tour styles*/
@@ -555,8 +519,10 @@ section .gallery {
 
 .tour-section h2 {
   color: black;
-  font-size: 24px;
-  margin-bottom: 10px;
+  margin: 5%;
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .tour-dates {
@@ -590,6 +556,14 @@ section .gallery {
   text-align: center;
 }
 
+.news-section h2 {
+  color: black;
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
 .card-container {
   display: flex;
   justify-content: center;
@@ -605,7 +579,7 @@ section .gallery {
   background-color: white;
   border-radius: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.381);
-  margin: 20px;
+  margin: 5px;
   padding: 20px;
 }
 
@@ -616,6 +590,7 @@ section .gallery {
 .card h2 {
   color: red;
   margin-top: 0;
+  font-size: 2rem;
 }
 
 .card h3 {
@@ -631,8 +606,8 @@ section .gallery {
 /*contact styles*/
 
 .contact {
-  background-color: white;
-  color: black;
+  background-color: #323232;
+  color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -640,7 +615,10 @@ section .gallery {
 }
 
 .contact h2 {
-  margin-bottom: 20px;
+  margin: 5%;
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .contact form {
@@ -650,6 +628,7 @@ section .gallery {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin: 2%;
 }
 
 .contact form label {
@@ -689,7 +668,8 @@ section .gallery {
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap:3%;
   align-items: center;
 }
 
