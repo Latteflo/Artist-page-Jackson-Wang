@@ -211,11 +211,20 @@ canvas {
   z-index: 0;
 }
 
+.hero{
+position: relative;
+width: 100%;
+height: 100%;
+background: transparent;
+}
+
 .title {
   color: var(--red);
   font-weight: 900;
   font-size: 10rem;
-  z-index: 2;
+  position: absolute;
+  top: 35%;
+  z-index: 3;
   width: 100%;
   background-image: url(https://scitechdaily.com/images/Lava-Flow.gif);
   background-size: cover;
@@ -228,15 +237,22 @@ canvas {
 .hero-img {
   position: absolute;
   z-index: 1;
-  width: 36.5%;
+  bottom: 0.1%;
+  left: 15%;
+  width: 60%;
   object-fit: cover;
 }
 
-@media screen and (max-width: 768px) {
-  .title {
-    font-size: 8rem;
-  }
+.hero-img::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 100%);
 }
+
 
 @media screen and (max-width: 480px) {
   .title {
@@ -254,6 +270,7 @@ section.about {
   flex-direction: row;
   background-color: var(--black);
   padding: 5%;
+  padding-top: 5%;
   margin: 0 auto;
 }
 
@@ -439,10 +456,16 @@ section > iframe {
 }
 
 .music .button {
-  width: 40%;
+  width: 35%;
   margin: 5%;
   color: var(--black);
   text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .music .button {
+    width: 60%;
+  }
 }
 
 /*video  styles*/
