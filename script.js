@@ -1,6 +1,6 @@
 ///////////////////image grid gsap////////////////////
 let options = {
-  imgSrc : "/media/8.jpg",
+  imgSrc : "/media/cruel.webp",
   containerName : "placeholder",
   rows:5,
   columns:5,
@@ -78,5 +78,3 @@ function ImageGrid(defaults)
 }
 
 ImageGrid(options);
-
-////////////////SMOKE////////////////////////////
