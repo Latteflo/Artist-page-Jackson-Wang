@@ -1,5 +1,13 @@
 @import "https://fonts.googleapis.com/css?family=Lato:300,400,700,900";
 
+:root {
+  --black: #000000;
+  --gray: #9b9b9b;
+  --light-gray: #e5e5e5;
+  --red: #ff0000;
+  --white: #ffffff;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -28,7 +36,7 @@ body {
   width: 0;
   height: 0;
   border-left: 50px solid transparent;
-  border-right: 100px solid red;
+  border-right: 100px solid var(--red);
   border-bottom: 100px solid transparent;
   border-top: 100px solid transparent;
   top: -100px;
@@ -48,14 +56,14 @@ body {
 
 .navbar .nav-container a {
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
   font-weight: 500;
   font-size: 1.2rem;
 }
 
 .navbar .nav-container a:hover {
   font-weight: bolder;
-  color: #fff;
+  color: var(--white);
 }
 
 .nav-container .checkbox {
@@ -88,7 +96,7 @@ body {
   height: 3px;
   width: 100%;
   border-radius: 10px;
-  background: #fff;
+  background: var(--white);
 }
 
 .nav-container .hamburger-lines .line1 {
@@ -107,7 +115,7 @@ body {
 
 .navbar .menu-items {
   padding-top: 4px;
-  box-shadow: inset 0 0 4000px rgb(248, 4, 4);
+  box-shadow: inset 0 0 4000px var(--red);
   width: 100%;
   transform: translateY(-150%);
   display: flex;
@@ -121,6 +129,13 @@ body {
   margin-bottom: 1.2rem;
   font-size: 1.5rem;
   font-weight: 500;
+}
+
+.navbar .menu-items .logo{
+  width: 51px;
+  height: 51px;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .nav-container input[type="checkbox"]:checked ~ .menu-items {
@@ -156,7 +171,7 @@ body {
 }
 
 .header-nav-link {
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
 }
 
@@ -171,9 +186,13 @@ body {
   }
 }
 
+main {
+  position: relative;
+  overflow: hidden;
+}
 .home {
   width: 100%;
-  height: 100vh;
+  height: 100vh;  
   text-align: center;
   margin: 0 auto;
   display: flex;
@@ -181,25 +200,24 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   overflow: hidden;
-  background-color: #000;
+  background-color: var(--black);
 }
 
-canvas{
+canvas {
   position: absolute;
-  width: 100%!important;
+  width: 100% !important;
   top: 0;
   left: 0;
   z-index: 0;
 }
 
 .title {
-  color: #060606;
+  color: var(--red);
   font-weight: 900;
-  /*border: 4px solid rgb(232, 225, 225);*/
   font-size: 10rem;
   z-index: 2;
   width: 100%;
-  background-image: url(https://64.media.tumblr.com/085ef9e24400a081858b1ab1b4bce8f8/25c7c64e6ec53a03-88/s400x600/a205de20a954ef871bbd1e3309660094d2b3e0db.gifv);
+  background-image: url(https://scitechdaily.com/images/Lava-Flow.gif);
   background-size: cover;
   color: transparent;
   background-clip: text;
@@ -207,14 +225,25 @@ canvas{
   -webkit-background-clip: text;
 }
 
-
-
 .hero-img {
   position: absolute;
   z-index: 1;
-  width:36%;
-  overflow: hidden;
+  width: 36.5%;
+  object-fit: cover;
 }
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 5rem;
+  }
+}
+
 
 /*about styling*/
 section.about {
@@ -223,8 +252,9 @@ section.about {
   align-items: center;
   flex-wrap: wrap;
   flex-direction: row;
-  background-color: #000000cd;
-  padding: 2%;
+  background-color: var(--black);
+  padding: 5%;
+  margin: 0 auto;
 }
 
 .container {
@@ -237,14 +267,15 @@ section.about {
 }
 
 .container > h2 {
-  color: #fff;
-  font-size:3rem;
+  color: var(--red);
+  font-size: 3rem;
+  font-family: "Ninja Attack", sans-serif;
   text-transform: uppercase;
   font-weight: 900;
 }
 
 .container > p {
-  color: #fff;
+  color: var(--white);
   font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.5;
@@ -252,7 +283,7 @@ section.about {
 }
 
 .highlight {
-  color: red;
+  color: var(--red);
 }
 /*button styles*/
 .button {
@@ -262,7 +293,7 @@ section.about {
   appearance: none;
   border: 0;
   background: transparent;
-  color: rgb(255, 254, 254);
+  color: var(--white);
   text-transform: uppercase;
   letter-spacing: 0.25em;
   outline: none;
@@ -274,8 +305,8 @@ section.about {
 
 .button:hover {
   background: rgba(7, 7, 7, 0.408);
-  border: 2px solid red;
-  color: red;
+  border: 2px solid var(--red);
+  color: var(--red);
   transform: scale(1.1);
 }
 
@@ -298,8 +329,8 @@ section.about {
   bottom: 0;
   left: -10px;
   right: -10px;
-  border-top: 2px solid red;
-  border-bottom: 2px solid red;
+  border-top: 2px solid var(--red);
+  border-bottom: 2px solid var(--red);
 }
 
 .button__horizontal::before {
@@ -318,8 +349,8 @@ section.about {
   right: 0;
   bottom: -10px;
   left: 0;
-  border-left: 2px solid red;
-  border-right: 2px solid red;
+  border-left: 2px solid var(--red);
+  border-right: 2px solid var(--red);
 }
 
 .button__vertical::before {
@@ -332,11 +363,15 @@ section.about {
 .button:hover .button__vertical {
   transform: scaleY(0);
 }
+.button a{
+  text-decoration: none;
+  color: var(--black);
+}
 
 /*img grid section styles*/
 
 .placeholder {
-  display: inline-block;
+  display: inline-flex;
   position: relative;
   width: 50%;
   height: 700px;
@@ -361,6 +396,21 @@ section.about {
   background-origin: center;
 }
 
+@media screen and (max-width: 768px) {
+
+  section.about{
+    flex-direction: column;
+  }
+.container{
+  width: 100%;
+}
+  .placeholder {
+    width: 100%;
+    height: 500px;
+  }
+  
+}
+
 /*audio section styles*/
 
 section.music {
@@ -369,15 +419,18 @@ section.music {
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
+  background-color: var(--light-gray);
 }
 section > iframe {
   width: 70%;
   height: 550px;
 }
 .music h2 {
-  color: #0a0a0a;
-  margin: 5%;
+  font-family: "Ninja Attack", sans-serif;
+  color: var(--black);
+  text-decoration: underline var(--red);
   padding: 2%;
+  margin: 2%;
   width: 100%;
   font-size: 3rem;
   text-transform: uppercase;
@@ -388,13 +441,22 @@ section > iframe {
 .music .button {
   width: 40%;
   margin: 5%;
-  color: #000;
+  color: var(--black);
   text-align: center;
 }
 
 /*video  styles*/
-.video h2{
-  color: #0a0a0a;
+
+.video {
+  background-color: var(--gray);
+  padding: 6px;
+  margin: 0 auto;
+}
+
+.video h2 {
+  font-family: "Ninja Attack", sans-serif;
+  text-decoration: underline var(--red);
+  color: var(--black);
   margin: 3%;
   text-transform: uppercase;
   font-size: 3rem;
@@ -421,14 +483,10 @@ iframe {
   border: none;
 }
 
-.video-description {
-  background-color: red;
-}
-
 .ribbon {
   position: relative;
   text-transform: uppercase;
-  color: white;
+  color: var(--white);
 }
 
 .ribbon2 {
@@ -439,14 +497,14 @@ iframe {
   left: 25px;
   text-align: center;
   border-top-left-radius: 3px;
-  background: #d41313;
+  background: var(--red);
 }
 .ribbon2:before {
   height: 0;
   width: 0;
   right: -5.5px;
   top: 0.1px;
-  border-bottom: 6px solid #d41313;
+  border-bottom: 6px solid var(--red);
   border-right: 6px solid transparent;
 }
 .ribbon2:before,
@@ -459,8 +517,8 @@ iframe {
   width: 0;
   bottom: -29.5px;
   left: 0;
-  border-left: 30px solid #d41313;
-  border-right: 30px solid #d41313;
+  border-left: 30px solid var(--red);
+  border-right: 30px solid var(--red);
   border-bottom: 30px solid transparent;
 }
 
@@ -481,7 +539,9 @@ section .gallery {
 }
 
 .gallery-section h2 {
-  color: #0a0a0a;
+  font-family: "Ninja Attack", sans-serif;
+  color: var(--black);
+  text-decoration: underline var(--red);
   margin: 5%;
   font-size: 3rem;
   font-weight: 900;
@@ -515,14 +575,17 @@ section .gallery {
 .tour-section {
   padding: 20px;
   text-align: center;
+  background-color: var(--light-gray);
 }
 
 .tour-section h2 {
-  color: black;
+  font-family: "Ninja Attack", sans-serif;
+  color: var(--black);
   margin: 5%;
   font-size: 3rem;
   font-weight: 900;
   text-transform: uppercase;
+  text-decoration: underline var(--red);
 }
 
 .tour-dates {
@@ -536,17 +599,17 @@ section .gallery {
 }
 
 .tour-dates li {
-  color: black;
+  color: var(--black);
   font-size: 18px;
   margin-bottom: 10px;
 }
 
 .tour-dates strong {
-  color: red;
+  color: var(--red);
 }
 .tour-section .button {
   margin: 5%;
-  color: #000;
+  color: var(--black);
   text-align: center;
 }
 
@@ -554,10 +617,17 @@ section .gallery {
 .news-section {
   width: 100%;
   text-align: center;
+  background-color: var(--gray);
+  display: flex;
+  flex-direction: column;
 }
 
 .news-section h2 {
-  color: black;
+  flex: 1 100%;
+  font-family: "Ninja Attack", sans-serif;
+  color: var(--black);
+  text-decoration: underline var(--red);
+  padding: 5%;
   font-size: 3rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -570,58 +640,94 @@ section .gallery {
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
-  align-items: stretch;
+}
+
+@media screen and (max-width: 768px) {
+  .news-section {
+    padding: 0;
+    margin: 0;
+  }
+  .card-container {
+    flex-direction: column;
+  }
+  .card {
+    flex: 1 1 100%;
+  }
 }
 
 .card {
-  width: 30%;
-  text-align: left;
-  background-color: white;
+  flex: 1 1 30%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--light-gray);
   border-radius: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.381);
-  margin: 5px;
-  padding: 20px;
+  margin: 1%;
+  padding: 1%;
 }
 
 .card img {
+  flex: 1000%;
   width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-.card h2 {
-  color: red;
-  margin-top: 0;
-  font-size: 2rem;
+.card > h2 {
+  color: var(--red);
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 .card h3 {
-  color: black;
-  margin-top: 10px;
+  color: var(--black);
+  margin: 10px;
 }
 
 .card p {
-  color: black;
-  margin-top: 10px;
+  color: var(--black);
+  margin: 10px;
+}
+.card .card-button {
+  margin: 5%;
+  text-align: center;
 }
 
 /*contact styles*/
 
 .contact {
-  background-color: #323232;
-  color: rgb(255, 255, 255);
+  background-color: var(--black);
+  position: relative;
+}
+.contact img.background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  z-index: 0;
+}
+
+.contact-content {
+  color: var(--white);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  z-index: 1;
+  position: relative;
 }
 
-.contact h2 {
+.contact-content h2 {
+  font-family: "Ninja Attack", sans-serif;
+  color: var(--red);
   margin: 5%;
   font-size: 3rem;
   font-weight: 900;
   text-transform: uppercase;
+  text-decoration: underline var(--red);
 }
 
-.contact form {
+.contact-content form {
   width: 50%;
   display: flex;
   flex-direction: row;
@@ -631,14 +737,14 @@ section .gallery {
   margin: 2%;
 }
 
-.contact form label {
+.contact-content form label {
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.contact form input[type="text"],
-.contact form input[type="email"],
-.contact form textarea {
+.contact-content form input[type="text"],
+.contact-content form input[type="email"],
+.contact-content form textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -646,35 +752,46 @@ section .gallery {
   border-radius: 5px;
 }
 
-.contact form input[type="submit"] {
-  background-color: red;
-  color: white;
-  padding: 10px 20px;
+.contact-content form input[type="submit"],
+.card-button {
+  background-color: var(--red);
+  color: var(--white);
+  padding: 15px 30px;
   border: none;
   border-radius: 5px;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   cursor: pointer;
+}
+
+.contact-content form input[type="submit"]:hover,
+.card-button:hover {
+  background-color: var(--white);
+  color: var(--red);
+  border: 1px solid var(--red);
 }
 
 /*footer styles*/
 
 .footer {
-  background-color: #000;
+  background-color: var(--black);
   padding: 30px 0 30px 0;
   text-align: center;
 }
+
 .social-icons {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  gap:3%;
+  gap: 3%;
   align-items: center;
 }
 
 .social-icons a {
-  color: red;
+  color: var(--red);
   font-size: 30px;
   margin-right: 10px;
 }
@@ -687,6 +804,7 @@ section .gallery {
 }
 
 .footer-text {
-  color: #fff;
+  color: var(--white);
   font-size: 18px;
+  margin-top: 10px;
 }
