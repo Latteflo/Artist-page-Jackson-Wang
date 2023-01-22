@@ -241,6 +241,7 @@ background: transparent;
   left: 15%;
   width: 60%;
   object-fit: cover;
+  filter: contrast(1.5);
 }
 
 .hero-img::before{
